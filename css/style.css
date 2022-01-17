@@ -1,15 +1,16 @@
 @charset "utf-8";
 body{
-    height: 4100px;
+    height: 3671px;
 }
 #perspective{
     margin: 0 auto;
     width: 95%;
-    height: 540px;
+    height: 480px;
     perspective: 500px;
     perspective-origin: center 168px;
     position: fixed;
     top: 10px;
+    left: calc( (100vw - 95%)/2 );
 }
 #content{
     transform-style: preserve-3d;
@@ -34,6 +35,19 @@ body{
     background-color: #ccffcc33;
 
 }
+    .b ul{
+        display: flex;
+        justify-content: space-around;
+        align-content: center;
+        flex-wrap: wrap;
+    }
+    .b li{
+        flex-wrap: wrap;
+        list-style-type: none;
+        border: 1px solid red;
+        padding: 2em;
+        margin: 1em;
+    }
 .c{ 
     transform: translate3d(0px, 0px, -2000px); 
     background-color: #ccccff33;
