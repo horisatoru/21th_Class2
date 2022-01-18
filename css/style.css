@@ -1,6 +1,6 @@
 @charset "utf-8";
 body{
-    height: 3700px;
+    height: 4670px;
 }
 #perspective{
     margin: 0 auto;
@@ -55,5 +55,9 @@ body{
 }
 .d{ 
     transform: translate3d(0px, 0px, -3000px);
+    background-color: #ffccff66;
+}
+.e{ 
+    transform: translate3d(0px, 0px, -4000px);
     background-color: #ffccff66;
 }
