@@ -14,7 +14,9 @@ body{
 }
 #content{
     transform-style: preserve-3d;
+    transform: translate3d(0px, 0px, 0px);
     height: 100%;
+    transition: transform 1s ease-out;
 }
 #content section{
     margin: 1em auto;
@@ -60,4 +62,10 @@ body{
 .e{ 
     transform: translate3d(0px, 0px, -4000px);
     background-color: #ffccff66;
+}
+.move{
+    position: absolute;
+    bottom: -30px;
+    width: 10%;
+    margin: 0 0 0 -5%;
 }

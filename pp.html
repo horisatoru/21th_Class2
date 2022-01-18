@@ -5,19 +5,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/style.css" rel="stylesheet">
-        <script>
-            window.addEventListener('scroll', ()=> {
-                let tcss = document.getElementById("content");
-                tcss.style.transform="translate3d(0, 0, "+window.pageYOffset+"px)";
-                console.log( '> translateZ('+window.pageYOffset+"px) )");
-            });
-        </script>
     </head>
     <body>
     <div id="perspective">
         <div id="content">
-            <section class="a">top</section>
+            <section class="a">top
+                <button id="button1" class="move">Next</button>
+            </section>
             <section class="b">1
+                <button id="button2" class="move">Next</button>
             <ul>
                 <li>11111</li>
                 <li>222</li>
@@ -28,10 +24,47 @@
                 <li>777</li>
             </ul>
             </section>
-            <section class="c">2</section>
-            <section class="d">3</section>
-            <section class="e">4</section>
+            <section class="c">2
+                <button id="button3" class="move">Next</button>
+            </section>
+            <section class="d">3
+                <button id="button4" class="move">Next</button>
+            </section>
+            <section class="e">4
+                <button id="totop" class="move">To Top</button>
+            </section>
         </div>
     </div>
+
+
+    <script>
+        // スクロールでZ軸方向の移動
+        window.addEventListener('scroll', ()=> {
+            let tcss = document.getElementById("content");
+            tcss.style.transform="translate3d(0, 0, "+window.pageYOffset+"px)";
+        });
+        // クリックで次のsectionへ移動
+        document.getElementById("button1").addEventListener("click", ()=> {
+            this.addEventListener('click', scroolA(1000) );
+        });
+        document.getElementById("button2").addEventListener("click", ()=> {
+            this.addEventListener('click', scroolA(2000) );
+        });
+        document.getElementById("button3").addEventListener("click", ()=> {
+            this.addEventListener('click', scroolA(3000) );
+        });
+        document.getElementById("button4").addEventListener("click", ()=> {
+            this.addEventListener('click', scroolA(4000) );
+        });
+        document.getElementById("totop").addEventListener("click", ()=> {
+            this.addEventListener('click', scroolA(0) );
+        });
+        // 移動用スクリプト
+        function scroolA(zindex) {
+            document.getElementById("content").style.transform="translate3d(0, 0, "+zindex+"px)";
+        }
+
+    </script>
+
     </body>
 </html>
