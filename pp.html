@@ -9,10 +9,10 @@
     <body>
     <div id="perspective">
         <div id="content">
-            <section class="a">top
+            <section id="a" class="a">top
                 <button id="button1" class="move">Next</button>
             </section>
-            <section class="b">1
+            <section id="b" class="b">1
                 <button id="button2" class="move">Next</button>
             <ul>
                 <li id="p0" class="lb">11111
@@ -31,13 +31,13 @@
                     <span>fff</span></li>
             </ul>
             </section>
-            <section class="c">2
+            <section id="c" class="c">2
                 <button id="button3" class="move">Next</button>
             </section>
-            <section class="d">3
+            <section id="d" class="d">3
                 <button id="button4" class="move">Next</button>
             </section>
-            <section class="e">4
+            <section id="e" class="e">4
                 <button id="totop" class="move">To Top</button>
             </section>
         </div>
@@ -50,6 +50,7 @@
             let tcss = document.getElementById("content");
             tcss.style.transform="translate3d(0, 0, "+window.pageYOffset+"px)";
         });
+
         // クリックで次のsectionへ移動
         document.getElementById("button1").addEventListener("click", ()=> {
             this.addEventListener('click', scroolA(1000) );
@@ -70,34 +71,33 @@
         function scroolA(zindex) {
             document.getElementById("content").style.transform="translate3d(0, 0, "+zindex+"px)";
         }
-//hover
-let target,target_child;
-target = document.getElementById("p0");
-
-target.addEventListener('mouseover', () =>{
-    target_child = target.querySelector('span');
-    target_child.style.display = 'block';
-    target_child.animate([
-        {
-            opacity:0,
-        },
-        {
-            opacity:1,
-        }
-    ],100);
-}, false);
-target.addEventListener('mouseleave', () =>{
-    target_child = target.querySelector('span');
-    target_child.style.display = 'none';
-    target_child.animate([
-        {
-            opacity:1,
-        },
-        {
-            opacity:0,
-        }
-    ],100);
-}, false);
+        //hover
+        let target,target_child;
+        target = document.getElementById("p0");
+        target.addEventListener('mouseover', () =>{
+            target_child = target.querySelector('span');
+            target_child.style.display = 'block';
+            target_child.animate([
+                {
+                    opacity:0,
+                },
+                {
+                    opacity:1,
+                }
+            ],100);
+        }, false);
+        target.addEventListener('mouseleave', () =>{
+            target_child = target.querySelector('span');
+            target_child.style.display = 'none';
+            target_child.animate([
+                {
+                    opacity:1,
+                },
+                {
+                    opacity:0,
+                }
+            ],100);
+        }, false);
     </script>
 
     </body>
