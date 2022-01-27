@@ -15,7 +15,7 @@
             <section id="b" class="b">1
                 <button id="button2" class="move">Next</button>
             <ul>
-                <li id="p0" class="lb">11111
+                <li class="lb" id="p0">11111
                     <span>aaaaaa</span></li>
                 <li id="p1" class="lb">222
                     <span>aaa</span></li>
@@ -71,34 +71,51 @@
         function scroolA(zindex) {
             document.getElementById("content").style.transform="translate3d(0, 0, "+zindex+"px)";
         }
+     </script>
+
+<script>
+//classグループ
+const target2 = document.querySelectorAll('.lb');
+//forで要素数分ループ処理
+for (let i = 0; i < target2.length; i++) {
+	//クリックイベントを追加
+	target2[i].addEventListener('mouseover', (event) => {
+        console.log('mouseover: '+ event.target.id);
         //hover
-        let target,target_child;
-        target = document.getElementById("p0");
-        target.addEventListener('mouseover', () =>{
+        if(event.target.id){
+            let target,target_child;
+            target = document.getElementById(event.target.id);
+
+            target.addEventListener('mouseover', () =>{
+                target_child = target.querySelector('span');
+                target_child.style.display = 'block';
+                target_child.animate([
+                    {
+                        opacity:0,
+                    },
+                    {
+                        opacity:1,
+                    }
+                ],300);
+            }, false);
+
+            target.addEventListener('mouseleave', () =>{
             target_child = target.querySelector('span');
-            target_child.style.display = 'block';
             target_child.animate([
                 {
-                    opacity:0,
+                    opacity:1,
                 },
                 {
-                    opacity:1,
+                    opacity:0,
                 }
-            ],100);
-        }, false);
-        target.addEventListener('mouseleave', () =>{
-            target_child = target.querySelector('span');
+            ],150);
             target_child.style.display = 'none';
-            target_child.animate([
-                {
-                    opacity:1,
-                },
-                {
-                    opacity:0,
-                }
-            ],100);
         }, false);
-    </script>
+        }
+	}, false);
+
+}
+</script>
 
     </body>
 </html>
