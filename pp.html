@@ -80,14 +80,13 @@ const target2 = document.querySelectorAll('.lb');
 for (let i = 0; i < target2.length; i++) {
 	//クリックイベントを追加
 	target2[i].addEventListener('mouseover', (event) => {
-        console.log('mouseover: '+ event.target.id);
         //hover
         if(event.target.id){
             let target,target_child;
-            let client_p = target.getBoundingClientRect();         
             let left_value='10px';
             target = document.getElementById(event.target.id);
-
+            let client_p = target.getBoundingClientRect();         
+            
             target.addEventListener('mouseover', () =>{
                 target_child = target.querySelector('span');
                 target_child.style.display = 'block';
