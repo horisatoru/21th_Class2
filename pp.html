@@ -84,11 +84,19 @@ for (let i = 0; i < target2.length; i++) {
         //hover
         if(event.target.id){
             let target,target_child;
+            let client_p = target.getBoundingClientRect();         
+            let left_value='10px';
             target = document.getElementById(event.target.id);
 
             target.addEventListener('mouseover', () =>{
                 target_child = target.querySelector('span');
                 target_child.style.display = 'block';
+                // spanの位置を左右で分ける
+                if(client_p.left < (window.innerWidth/2) ){
+                    target_child.style.left = left_value;
+                }else{
+                    target_child.style.right = left_value;
+                }
                 target_child.animate([
                     {
                         opacity:0,
