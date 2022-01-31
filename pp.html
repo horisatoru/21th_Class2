@@ -14,25 +14,42 @@
             </section>
             <section id="b" class="b">1
                 <button id="button2" class="move">Next</button>
-            <ul>
-                <li class="lb" id="p0">11111
-                    <span>aaaaaa</span></li>
-                <li id="p1" class="lb">222
-                    <span>aaa</span></li>
-                <li id="p2" class="lb">3333
-                    <span>bbb</span></li>
-                <li id="p3" class="lb">44
-                    <span>ccc</span></li>
-                <li id="p4" class="lb">5
-                    <span>ddd</span></li>
-                <li id="p5" class="lb">666666
-                    <span>eee</span></li>
-                <li id="p6" class="lb">777
-                    <span>fff</span></li>
-            </ul>
+                <ul>
+                    <!-- id はユニークである様に設定する -->
+                    <li class="lb" id="p0">11111
+                        <span>aaaaaa</span></li>
+                    <li id="p1" class="lb">222
+                        <span>aaa</span></li>
+                    <li id="p2" class="lb">3333
+                        <span>bbb</span></li>
+                    <li id="p3" class="lb">44
+                        <span>ccc</span></li>
+                    <li id="p4" class="lb">5
+                        <span>ddd</span></li>
+                    <li id="p5" class="lb">666666
+                        <span>eee</span></li>
+                    <li id="p6" class="lb">777
+                        <span>fff</span></li>
+                </ul>
             </section>
             <section id="c" class="c">2
                 <button id="button3" class="move">Next</button>
+                <ul>
+                    <li class="lb" id="pp0">11111
+                        <span>aaaaaa</span></li>
+                    <li id="pp1" class="lb">222
+                        <span>aaa</span></li>
+                    <li id="pp2" class="lb">3333
+                        <span>bbb</span></li>
+                    <li id="pp3" class="lb">44
+                        <span>ccc</span></li>
+                    <li id="pp4" class="lb">5
+                        <span>ddd</span></li>
+                    <li id="pp5" class="lb">666666
+                        <span>eee</span></li>
+                    <li id="pp6" class="lb">777
+                        <span>fff</span></li>
+                </ul>
             </section>
             <section id="d" class="d">3
                 <button id="button4" class="move">Next</button>
@@ -78,48 +95,55 @@
 const target2 = document.querySelectorAll('.lb');
 //forで要素数分ループ処理
 for (let i = 0; i < target2.length; i++) {
-	//クリックイベントを追加
+	//イベントを追加
 	target2[i].addEventListener('mouseover', (event) => {
-        //hover
-        if(event.target.id){
-            let target,target_child;
-            let left_value='10px';
-            target = document.getElementById(event.target.id);
-            let client_p = target.getBoundingClientRect();         
-            
-            target.addEventListener('mouseover', () =>{
-                target_child = target.querySelector('span');
-                target_child.style.display = 'block';
-                // spanの位置を左右で分ける
-                if(client_p.left < (window.innerWidth/2) ){
-                    target_child.style.left = left_value;
-                }else{
-                    target_child.style.right = left_value;
-                }
-                target_child.animate([
-                    {
-                        opacity:0,
-                    },
-                    {
-                        opacity:1,
-                    }
-                ],300);
-            }, false);
-
-            target.addEventListener('mouseleave', () =>{
-            target_child = target.querySelector('span');
+console.log(event.target.id);
+    //hover
+    if(event.target.id){
+        let target,target_child;
+        let left_value='10px';
+        let top_value='10px';
+        target = document.getElementById(event.target.id);
+        let client_p = target.getBoundingClientRect();
+        target_child = target.querySelector('span');
+        // spanの位置を左右で分ける
+        if(client_p.left < (window.innerWidth/2) ){
+            target_child.style.left = left_value;
+        }else{
+            target_child.style.right = left_value;
+        }
+console.log(window.innerHeight/2);
+        if(client_p.top < (window.innerHeight/2) ){
+            target_child.style.top = top_value;
+        }else{
+            target_child.style.bottom = top_value;
+        }
+        target_child.style.display = 'block';
+        target.addEventListener('mouseover',  () =>{
             target_child.animate([
                 {
-                    opacity:1,
+                    opacity:0,
                 },
                 {
-                    opacity:0,
+                    opacity:1,
                 }
-            ],150);
-            target_child.style.display = 'none';
+            ],300);
         }, false);
-        }
-	}, false);
+
+        target.addEventListener('mouseleave', () =>{
+        target_child = target.querySelector('span');
+        target_child.animate([
+            {
+                opacity:1,
+            },
+            {
+                opacity:0,
+            }
+        ],150);
+        target_child.style.display = 'none';
+        }, false);
+    }
+}, false);
 
 }
 </script>

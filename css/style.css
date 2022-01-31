@@ -39,7 +39,7 @@ body{
 #content section li{
     flex-wrap: wrap;
     list-style-type: none;
-    border: 1px solid red;
+    border: 1px solid #ccc;
     padding: 4em;
     margin: 1em;
     background-color: white;
@@ -48,13 +48,13 @@ body{
 #content section li.lb span{
     display: none;
     position: absolute;
-    top:10px;
-    /* right:10px; */
+    /* top:10px; */
     z-index: 10;
     width: 240px;
     height: 180px;
     border-radius: 5px;
-    background-color: #ee82ee;
+    background-color: #fff;
+    filter: drop-shadow(4px 4px 5px #999);
 }
 .a{ 
     transform: translate3d(0px, 0px, 0px);
