@@ -101,8 +101,8 @@ console.log(event.target.id);
     //hover
     if(event.target.id){
         let target,target_child;
-        let left_value='10px';
-        let top_value='10px';
+        let left_value='3px';
+        let top_value='3px';
         target = document.getElementById(event.target.id);
         let client_p = target.getBoundingClientRect();
         target_child = target.querySelector('span');
@@ -127,7 +127,7 @@ console.log(window.innerHeight/2);
                 {
                     opacity:1,
                 }
-            ],300);
+            ],450);
         }, false);
 
         target.addEventListener('mouseleave', () =>{
