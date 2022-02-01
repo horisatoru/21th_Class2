@@ -10,10 +10,21 @@
     <div id="perspective">
         <div id="content">
             <section id="a" class="a">top
-                <button id="button1" class="move">Next</button>
+                <ul>
+                    <li id="pa">person A</li>
+                    <li id="pb">person B</li>
+                    <li id="pc">person C</li>
+                    <li id="pd">person D</li>
+                </ul>
+                <div class="move">
+                    <button id="button1">Next</button> 
+                </div>
             </section>
             <section id="b" class="b">1
-                <button id="button2" class="move">Next</button>
+                <div class="move">
+                    <button class="totop">To Top</button>
+                    <button id="button2">Next</button>
+                </div>
                 <ul>
                     <!-- id はユニークである様に設定する -->
                     <li class="lb" id="p0">11111
@@ -33,7 +44,10 @@
                 </ul>
             </section>
             <section id="c" class="c">2
-                <button id="button3" class="move">Next</button>
+                <div class="move">
+                    <button class="totop">To Top</button>
+                    <button id="button3">Next</button>
+                </div>
                 <ul>
                     <li class="lb" id="pp0">11111
                         <span>aaaaaa</span></li>
@@ -52,10 +66,15 @@
                 </ul>
             </section>
             <section id="d" class="d">3
-                <button id="button4" class="move">Next</button>
+                <div class="move">
+                    <button class="totop">To Top</button>
+                    <button id="button4">Next</button>
+                </div>
             </section>
             <section id="e" class="e">4
-                <button id="totop" class="move">To Top</button>
+                <div class="move">
+                    <button class="totop">To Top</button>
+                </div>
             </section>
         </div>
     </div>
@@ -69,6 +88,23 @@
         });
 
         // クリックで次のsectionへ移動
+        let totop_btn = document.getElementsByClassName("totop");
+        for(let n=0;n<totop_btn.length;n++){
+            if(document.getElementsByClassName("totop")[n]){
+                document.getElementsByClassName("totop")[n].addEventListener("click", ()=> {
+                    this.addEventListener('click', scroolA(0) );
+                });
+                console.log( document.getElementsByClassName("totop")[n]);
+            }
+        }
+        document.getElementsByClassName("totop")[1].addEventListener("click", ()=> {
+            if(document.getElementsByClassName("totop")[1]){
+                console.log( document.getElementsByClassName("totop").length);
+            }
+            
+            this.addEventListener('click', scroolA(0) );
+        });
+
         document.getElementById("button1").addEventListener("click", ()=> {
             this.addEventListener('click', scroolA(1000) );
         });
@@ -81,9 +117,21 @@
         document.getElementById("button4").addEventListener("click", ()=> {
             this.addEventListener('click', scroolA(4000) );
         });
-        document.getElementById("totop").addEventListener("click", ()=> {
-            this.addEventListener('click', scroolA(0) );
+
+
+        document.getElementById("pa").addEventListener("click", ()=> {
+            this.addEventListener('click', scroolA(1000) );
         });
+        document.getElementById("pb").addEventListener("click", ()=> {
+            this.addEventListener('click', scroolA(2000) );
+        });
+        document.getElementById("pc").addEventListener("click", ()=> {
+            this.addEventListener('click', scroolA(3000) );
+        });
+        document.getElementById("pd").addEventListener("click", ()=> {
+            this.addEventListener('click', scroolA(4000) );
+        });
+
         // 移動用スクリプト
         function scroolA(zindex) {
             document.getElementById("content").style.transform="translate3d(0, 0, "+zindex+"px)";
@@ -97,7 +145,6 @@ const target2 = document.querySelectorAll('.lb');
 for (let i = 0; i < target2.length; i++) {
 	//イベントを追加
 	target2[i].addEventListener('mouseover', (event) => {
-console.log(event.target.id);
     //hover
     if(event.target.id){
         let target,target_child;
@@ -112,7 +159,6 @@ console.log(event.target.id);
         }else{
             target_child.style.right = left_value;
         }
-console.log(window.innerHeight/2);
         if(client_p.top < (window.innerHeight/2) ){
             target_child.style.top = top_value;
         }else{
